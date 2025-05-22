@@ -1,0 +1,201 @@
+/* Vertical Section Styles */
+.verticle-section {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    padding: 14% 6% 14% 6%;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.verticle-section .icons {
+    gap: clamp(20px, 3vw, 45px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+.verticle-section .icons img {
+    width: clamp(80px, 15vw, 100px);
+    height: auto;
+}
+
+.verticle-section .content p {
+    margin: clamp(20px, 3vw, 40px) 0;
+    font-size: clamp(1rem, 1.3vw, 1.5rem);
+}
+
+/* Vertical Content Layout */
+.verticle-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14% 6% 7% 6%;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.verticle-content-left {
+    flex: 1;
+    position: relative;
+
+}
+
+.verticle-content .heading img {
+    top: 50px;
+    left: 35px;
+}
+
+img.verticle-content-logos {
+    width: 100% !important;
+    max-width: 300px !important;
+    height: auto !important;
+    margin-bottom: 30px;
+}
+
+.verticle-content-left p {
+    font-weight: 200;
+    font-family: 'Open-Sans';
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    line-height: 1.6;
+}
+
+
+.verticle-content-item {
+    max-width: 600px;
+}
+
+.verticle-content-item img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+}
+
+.verticle-content-item p {
+    margin: 0;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    line-height: 1.6;
+    font-weight: 200;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+    .verticle-section {
+        min-height: 100vh;
+        padding: 0 6% 7% 10%;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .verticle-content {
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 14% 6% 7% 6%;
+        gap: 60px;
+    }
+
+    .verticle-content-left {
+        flex: 1;
+        
+    }
+
+    .verticle-content-item {
+        flex: 2;
+    }
+
+    .verticle-content-item img {
+        height: 600px;
+    }
+}
+
+@media (max-width: 768px){
+    .verticle-content {
+        flex-direction: column-reverse;
+        padding: 10% 6%;
+      }
+    
+      /* Alternate every second section */
+      .verticle-content:nth-child(even) {
+        flex-direction: column;
+      }
+
+    .verticle-content-item {
+        text-align: center;
+    }
+    img.verticle-content-logos{
+        max-width: 180px !important;
+    }
+
+    .verticle-content-item p{
+        padding-bottom: 30px;
+    }
+
+    .connect-footer.footer-section{
+        justify-content: center;
+    }
+    
+}
+
+@media (max-width: 480px) {
+    .verticle-section .icons {
+        gap: 15px;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    .verticle-section .icons img {
+        width: 100px;
+    }
+
+    .verticle-content-item img {
+        max-height: 300px;
+    }
+
+    .verticle-content .heading img {
+        top: 5%;
+        left: 0;
+    }
+}
+
+/* iOS Specific Fixes */
+@supports (-webkit-touch-callout: none) {
+    .verticle-section {
+        min-height: -webkit-fill-available;
+    }
+
+    .verticle-content-item img {
+        max-height: 50vh;
+    }
+}
+
+/* Animation Base Styles */
+.verticle-content {
+  transform: translateY(20px);
+  will-change: transform, opacity;
+}
+
+.verticle-content-item {
+  transform: translateY(0);
+  will-change: transform;
+}
+
+.verticle-content-logos {
+  transform: translateY(40px) scale(0.9);
+  will-change: transform, opacity;
+}
+
+.verticle-content-item img:not(.verticle-content-logos) {
+  transform: translateY(30px);
+  will-change: transform, opacity;
+}
+
+.verticle-content-item p {
+  transform: translateY(20px);
+  will-change: transform, opacity;
+}
+
+.bg-graph img {
+  will-change: transform;
+}

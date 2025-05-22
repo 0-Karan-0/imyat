@@ -1,0 +1,555 @@
+@font-face {
+  font-family: 'Open-Sans';
+  src: url('../fonts/Open_Sans/OpenSans-Light.ttf');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'Open-Sans';
+  src: url('../fonts/Open_Sans/OpenSans-Regular.ttf');
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Base styles */
+body {
+  margin: 0;
+  font-family: 'Open-Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #1a1a1a;
+  background: linear-gradient(to right, #59b55c, #a9e791, #eaf7e5);
+  line-height: 1.6;
+  font-weight: 400;
+  overflow-x: hidden;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+/* iOS viewport height fix */
+@supports (-webkit-touch-callout: none) {
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+
+/* Header styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5% 6% 0 6%;
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 80%;
+}
+
+.logo img {
+  width: 100%;
+  height: 95px;
+  max-height: 15vw;
+  max-width: 100%;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  align-items: center;
+  z-index: 100;
+}
+
+nav a {
+  text-decoration: none;
+  margin-left: 50px;
+  font-size: clamp(1rem, 1.7vw, 1.7rem);
+  color: #1a1a1a;
+  transition: color 0.3s ease;
+  font-family: 'Open-Sans';
+  font-weight: 200;
+}
+
+nav a:hover {
+  color: #49b749;
+}
+
+/* Mobile menu button */
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+  position: relative;
+  width: 40px;
+  height: 30px;
+}
+
+.menu-icon {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #1a1a1a;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.menu-icon::before {
+  top: -20px;
+  width: 40px;
+}
+
+.menu-icon::after {
+  bottom: 8px;
+  width: 40px;
+}
+
+/* Active state for menu button */
+.menu-btn.active .menu-icon {
+  background: transparent;
+}
+
+.menu-btn.active .menu-icon::before {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-btn.active .menu-icon::after {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Hero section with better mobile scaling */
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 5% 6% 7% 6%;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.content {
+  max-width: 1075px;
+  width: 100%;
+  position: relative;
+}
+
+.heading {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  font-weight: 200;
+  font-family: 'Open-Sans';
+}
+
+.heading img {
+  position: absolute;
+  top: 0px;
+  left: -120px;
+  width: 100%;
+  /* height: 180px; */
+  height: clamp(50px, 10vw, 180px);
+  object-fit: contain;
+  rotate: -4deg !important;
+}
+
+.content p {
+  margin: 45px 0 70px 0;
+  font-weight: 200;
+  font-size: clamp(1rem, 1.3vw, 1.3rem);
+  line-height: 26px;
+}
+
+/* Icons with better mobile behavior */
+.icons {
+  display: flex;
+  gap: clamp(15px, 3vw, 30px);
+  flex-wrap: wrap;
+}
+
+.icons img {
+  width: clamp(40px, 7vw, 70px);
+  height: auto;
+  max-width: 100%;
+}
+
+/* Background graph elements */
+.bg-graph img {
+  position: absolute;
+  top: 8%;
+  width: 50%;
+}
+
+.bg-graph.bg-graph-right img {
+  right: 0;
+  rotate: -125deg !important;
+}
+
+/* Values section with improved responsiveness */
+.values {
+  display: flex;
+  justify-content: space-between;
+  padding: 14% 6% 7% 14%;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.values-left {
+  flex: 1;
+  position: relative;
+}
+
+.values .heading img {
+  top: -45px;
+  left: 20px;
+}
+
+.values-right {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-left: 60px;
+}
+
+.value-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.value-item img {
+  width: clamp(40px, 6vw, 65px);
+  height: auto;
+  margin-top: 5px;
+}
+
+.value-item h3 {
+  margin: 0;
+  font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+  font-weight: 200;
+  font-family: 'Open-Sans';
+}
+
+.value-item p {
+  margin: 0;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  line-height: 1.5;
+  font-weight: 200;
+  font-family: 'Open-Sans';
+}
+
+.bg-graph.bg-graph-left img {
+  left: 0;
+}
+
+.footer-section {
+  display: flex;
+  align-items: center;
+  padding: 14% 6% 7% 6%;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  z-index: 1;
+}
+
+.footer-logo {
+  height: 160px;
+  width: 100%;
+  object-fit: contain;
+  padding-left: 50px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border-left: 1px solid #000;
+  padding-left: 50px;
+  border-right: 1px solid #000;
+  padding-right: 50px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 200;
+  font-size: clamp(1.2rem, 1.8vw, 1.8rem);
+  text-align: center;
+}
+
+.footer-right {
+  z-index: 1;
+}
+
+.linkedin-icon img {
+  height: clamp(50px, 7vw, 75px);
+  width: auto;
+  padding-left: 50px;
+}
+
+
+@media (max-width: 1024px) {
+  .logo img {
+    height: 80px;
+  }
+
+  nav a {
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 20px 5%;
+  }
+
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: linear-gradient(to right, #a9e791, #eaf7e5);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0;
+    margin: 0;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  nav.active {
+    right: 0;
+  }
+
+  nav a {
+    margin: 20px 0;
+    font-size: 1.8rem;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+  }
+
+  nav a:hover {
+    transform: translateX(5px);
+  }
+
+  /* Prevent body scroll when menu is open */
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .heading img {
+    display: none;
+  }
+
+  .values {
+    padding: 14% 6% 7% 6%;
+    flex-direction: column;
+  }
+
+  .values-right {
+    padding-left: 0;
+  }
+
+  .footer-logo {
+    padding-left: 0;
+  }
+  .footer-left{
+    gap: 20px;
+  }
+  .linkedin-icon img {
+    padding-left: 20px;
+}
+.footer-links {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.footer-section {
+  padding: 25% 6% 10% 6%;
+}
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    height: 60px;
+  }
+
+  .content p {
+    margin: 30px 0 50px 0;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer-links a {
+    padding: 5px 0;
+  }
+
+  .bg-graph img {
+    width: 100%;
+  }
+
+  .bg-graph.bg-graph-left img {
+    left: -150px;
+  }
+
+  .bg-graph.bg-graph-right img {
+    right: -150px;
+  }
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+
+  a,
+  button {
+    -webkit-touch-callout: none;
+    cursor: pointer;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  * {
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media screen and (orientation: landscape) and (max-width: 768px) {
+  .hero {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .heading {
+    font-size: 2.5rem;
+  }
+
+  .content p {
+    font-size: 1rem;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+}
+
+/* ==========================================================================
+   Animation Components
+   ========================================================================== */
+/* Floating Dots Background */
+    .floating-dots {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(73, 183, 73, 0.4);
+    }
+    .magnetic-btn {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      overflow: visible;
+    }
+    .magnetic-btn .hover-effect {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(73, 183, 73, 0.1);
+      border-radius: 50%;
+      transform: scale(0);
+      opacity: 0;
+    }
+    .interactive-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .text-highlight {
+      position: relative;
+      display: inline-block;
+    }
+    .text-highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 30%;
+      background: rgba(89, 181, 92, 0.3);
+      z-index: -1;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 0.5s ease;
+    }
+    .text-highlight:hover::after {
+      transform: scaleX(1);
+    }
